@@ -4,10 +4,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-token = os.getenv("DISCORD_TOKEN")
-user = os.getenv("BLAME_USER")
-
 client = discord.Client()
+user = 349193980602220546
 
 @client.event
 async def on_ready():
@@ -16,10 +14,13 @@ async def on_ready():
 @client.event
 async def on_message(message):
 
+    if message.content.startswith('-cringe'):
+        if message.author.id == user:
+            await message.channel.send('<@%s> You!' % user)
+        else:
+            await message.channel.send('<@%s>' % user)
+    
     if message.author.id == user:
         await message.channel.send('<@%s> Cringe!' % user)
 
-    if message.content.startswith('!cringe'):
-        await message.channel.send('<@%s>' % user)
-
-client.run(token)
+client.run(os.getenv("DISCORD_TOKEN"))
