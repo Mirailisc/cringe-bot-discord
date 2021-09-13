@@ -1,3 +1,3 @@
-# cringe-bot-discord
+# mirabot-discord
 
-just to prank my discord friend
+just a music bot
